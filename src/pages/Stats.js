@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import './Stats.css';
 
 const Stats = () => {
@@ -25,18 +26,23 @@ const Stats = () => {
             if (label === 'React') label = 'React 🤮🤮🤮';
             if (label === 'Svelte') label = 'Svelte 🔥🔥🔥';
             return (
-              <div key={index} className="bar-item">
-                <span className="bar-label">{label}</span>
-                <div className="bar-wrapper">
-                  <div className="bar" style={{ width: `${tech.share}%` }}></div>
+              <Link to={tech.name.toLowerCase()} key={index} className="bar-item-link">
+                <div className="bar-item">
+                  <span className="bar-label">{label}</span>
+                  <div className="bar-wrapper">
+                    <div className="bar" style={{ width: `${tech.share}%` }}></div>
+                  </div>
+                  <span className="bar-value">{tech.share}%</span>
                 </div>
-                <span className="bar-value">{tech.share}%</span>
-              </div>
+              </Link>
             );
           })
         ) : (
           <p>Loading data...</p>
         )}
+      </div>
+      <div className="nested-content">
+        <Outlet />
       </div>
     </div>
   );
