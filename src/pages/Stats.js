@@ -19,6 +19,7 @@ const Stats = () => {
   return (
     <div className="stats-container">
       <h2>Technology Usage Statistics</h2>
+      <p>Click on a technology to learn more about it</p>
       <div className="bar-chart-container">
         {technologies.length > 0 ? (
           technologies.map((tech, index) => {
